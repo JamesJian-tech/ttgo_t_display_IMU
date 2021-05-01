@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{803FD0C6-D64E-4E16-9DC3-1DAEC859A3D2}") = "TTGO_IMU", "TTGO_IMU.vgdbproj", "{74E21AEC-B8CB-4F54-BF3A-B803D3B93962}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ESP32_Dev_Module = Debug|ESP32_Dev_Module
+		Release|ESP32_Dev_Module = Release|ESP32_Dev_Module
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74E21AEC-B8CB-4F54-BF3A-B803D3B93962}.Debug|ESP32_Dev_Module.ActiveCfg = Debug|ESP32_Dev_Module
+		{74E21AEC-B8CB-4F54-BF3A-B803D3B93962}.Debug|ESP32_Dev_Module.Build.0 = Debug|ESP32_Dev_Module
+		{74E21AEC-B8CB-4F54-BF3A-B803D3B93962}.Release|ESP32_Dev_Module.ActiveCfg = Release|ESP32_Dev_Module
+		{74E21AEC-B8CB-4F54-BF3A-B803D3B93962}.Release|ESP32_Dev_Module.Build.0 = Release|ESP32_Dev_Module
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D6380D0-5AFF-4C4A-8A9D-9A37F4EED717}
+	EndGlobalSection
+EndGlobal

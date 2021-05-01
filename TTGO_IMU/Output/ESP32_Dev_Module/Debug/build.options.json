@@ -1,0 +1,11 @@
+{
+  "additionalFiles": "",
+  "builtInLibrariesFolders": "",
+  "builtInToolsFolders": "C:\\Users\\Admin\\AppData\\Local/Arduino15/packages",
+  "customBuildProperties": "runtime.tools.esptool_py.path=C:\\Users\\Admin\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\esptool_py\\3.0.0,runtime.tools.xtensa-esp32-elf-gcc.path=C:\\Users\\Admin\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\xtensa-esp32-elf-gcc\\1.22.0-97-gc752ad5-5.2.0,runtime.tools.ctags.path=C:\\Users\\Admin\\AppData\\Local\\VisualGDB\\Arduino\\tools-builder\\ctags\\5.8-arduino11",
+  "fqbn": "esp32:esp32:esp32:PSRAM=disabled,PartitionScheme=default,CPUFreq=240,FlashMode=qio,FlashFreq=80,FlashSize=4M,UploadSpeed=921600,DebugLevel=none",
+  "hardwareFolders": "C:\\Users\\Admin\\AppData\\Local\\Arduino15\\packages",
+  "otherLibrariesFolders": "C:\\Users\\Admin\\Documents\\Arduino\\Libraries",
+  "runtime.ide.version": "10600",
+  "sketchLocation": "C:\\Users\\Admin\\Documents\\Arduino\\TTGO_GY-BNO055_Heading\\ttgo_t_display_IMU\\TTGO_IMU\\sketches\\TTGO_IMU.ino"
+}
