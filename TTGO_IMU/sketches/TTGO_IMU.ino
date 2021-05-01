@@ -1,11 +1,18 @@
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
+#include <WiFi.h>
+#include <ESPmDNS.h>
+#include <WiFiUdp.h>
+#include <ArduinoOTA.h>
 //ESP32 
 #define I2C_SDA 21
 #define I2C_SCL 22
 #include <TFT_eSPI.h> 
 #include <SPI.h>
+
+const char* ssid = "YourSSID";
+const char* password = "YourPASSWORD";
 
 double xPos = 0, yPos = 0, headingVel = 0;
 uint16_t BNO055_SAMPLERATE_DELAY_MS = 10; //how often to read data from the board
@@ -43,7 +50,47 @@ void setup()   {
     Serial.print("No BNO055 detected");
     while (1);
   }
+	pinMode(12, OUTPUT);
+	WiFi.mode(WIFI_STA);
+	WiFi.begin(ssid, password);
+	while (WiFi.waitForConnectResult() != WL_CONNECTED) {
+		Serial.println("Connection Failed! Rebooting...");
+		delay(5000);
+		ESP.restart();
+	}
+	
+	ArduinoOTA
+  .onStart([]() {
+		String type;
+		if (ArduinoOTA.getCommand() == U_FLASH)
+			type = "sketch";
+		else // U_SPIFFS
+		  type = "filesystem";
 
+		// NOTE: if updating SPIFFS this would be the place to unmount SPIFFS using SPIFFS.end()
+		Serial.println("Start updating " + type);
+	})
+	.onEnd([]() {
+		Serial.println("\nEnd");
+	})
+	.onProgress([](unsigned int progress, unsigned int total) {
+		Serial.printf("Progress: %u%%\r", (progress / (total / 100)));
+	})
+	.onError([](ota_error_t error) {
+		Serial.printf("Error[%u]: ", error);
+		if (error == OTA_AUTH_ERROR) Serial.println("Auth Failed");
+		else if (error == OTA_BEGIN_ERROR) Serial.println("Begin Failed");
+		else if (error == OTA_CONNECT_ERROR) Serial.println("Connect Failed");
+		else if (error == OTA_RECEIVE_ERROR) Serial.println("Receive Failed");
+		else if (error == OTA_END_ERROR) Serial.println("End Failed");
+	});
+
+	ArduinoOTA.begin();
+
+	Serial.println("Ready");
+	Serial.print("IP address: ");
+	Serial.println(WiFi.localIP());
+	
   tft.begin();
   tft.setRotation(0);
 
@@ -69,6 +116,10 @@ void setup()   {
 // =======================================================================================
 
 void loop() {
+	ArduinoOTA.handle();
+	
+	digitalWrite(12, HIGH);    // turn the LED on (HIGH is the voltage level)
+	
   unsigned long tStart = micros();
   sensors_event_t orientationData , linearAccelData;
   bno.getEvent(&orientationData, Adafruit_BNO055::VECTOR_EULER);
